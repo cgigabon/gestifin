@@ -191,7 +191,7 @@ export function BudgetSettingsClient({
               <Button type="submit">Enregistrer les modifications</Button>
             </motion.div>
             <motion.div whileHover={{ scale: 1.05 }} whileTap={{ scale: 0.95 }}>
-              <Button type="submit" variant="secondary" formAction={handleApplyPercents}>
+              <Button type="submit" variant="default" formAction={handleApplyPercents}>
                 Appliquer les %
               </Button>
             </motion.div>

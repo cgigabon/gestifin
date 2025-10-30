@@ -11,7 +11,7 @@ import { z } from 'zod';
 
 export const incomeSchema = z.object({
   montant: z
-    .number({ required_error: 'Le montant est requis' })
+    .number({ message: 'Le montant est requis' })
     .positive('Le montant doit être positif')
     .min(100, 'Minimum 100 XAF'),
   
@@ -27,7 +27,7 @@ export const incomeSchema = z.object({
     .or(z.literal('')),
   
   date: z
-    .string({ required_error: 'La date est requise' })
+    .string({ message: 'La date est requise' })
     .regex(/^\d{4}-\d{2}-\d{2}$/, 'Format de date invalide'),
 });
 
@@ -39,7 +39,7 @@ export type IncomeFormData = z.infer<typeof incomeSchema>;
 
 export const expenseSchema = z.object({
   montant: z
-    .number({ required_error: 'Le montant est requis' })
+    .number({ message: 'Le montant est requis' })
     .positive('Le montant doit être positif')
     .min(100, 'Minimum 100 XAF'),
   
@@ -51,7 +51,7 @@ export const expenseSchema = z.object({
     .or(z.literal('')),
   
   date: z
-    .string({ required_error: 'La date est requise' })
+    .string({ message: 'La date est requise' })
     .regex(/^\d{4}-\d{2}-\d{2}$/, 'Format de date invalide'),
   
   allocations: z
@@ -79,16 +79,16 @@ export type ExpenseFormData = z.infer<typeof expenseSchema>;
 
 export const transferSchema = z.object({
   montant: z
-    .number({ required_error: 'Le montant est requis' })
+    .number({ message: 'Le montant est requis' })
     .positive('Le montant doit être positif')
     .min(100, 'Minimum 100 XAF'),
   
   source_id: z
-    .number({ required_error: 'Enveloppe source requise' })
+    .number({ message: 'Enveloppe source requise' })
     .positive('Sélectionnez une enveloppe source'),
   
   destination_id: z
-    .number({ required_error: 'Enveloppe destination requise' })
+    .number({ message: 'Enveloppe destination requise' })
     .positive('Sélectionnez une enveloppe destination'),
   
   description: z
@@ -98,7 +98,7 @@ export const transferSchema = z.object({
     .or(z.literal('')),
   
   date: z
-    .string({ required_error: 'La date est requise' })
+    .string({ message: 'La date est requise' })
     .regex(/^\d{4}-\d{2}-\d{2}$/, 'Format de date invalide'),
 }).refine(
   (data) => data.source_id !== data.destination_id,
@@ -116,12 +116,12 @@ export type TransferFormData = z.infer<typeof transferSchema>;
 
 export const envelopeSchema = z.object({
   nom: z
-    .string({ required_error: 'Le nom est requis' })
+    .string({ message: 'Le nom est requis' })
     .min(2, 'Minimum 2 caractères')
     .max(50, 'Maximum 50 caractères'),
   
   budget_mensuel: z
-    .number({ required_error: 'Le budget est requis' })
+    .number({ message: 'Le budget est requis' })
     .nonnegative('Le budget ne peut pas être négatif'),
   
   pourcentage: z
@@ -140,11 +140,11 @@ export type EnvelopeFormData = z.infer<typeof envelopeSchema>;
 
 export const loginSchema = z.object({
   email: z
-    .string({ required_error: 'L\'email est requis' })
+    .string({ message: 'L\'email est requis' })
     .email('Email invalide'),
   
   password: z
-    .string({ required_error: 'Le mot de passe est requis' })
+    .string({ message: 'Le mot de passe est requis' })
     .min(6, 'Minimum 6 caractères'),
 });
 
@@ -152,21 +152,21 @@ export type LoginFormData = z.infer<typeof loginSchema>;
 
 export const registerSchema = z.object({
   nom: z
-    .string({ required_error: 'Le nom est requis' })
+    .string({ message: 'Le nom est requis' })
     .min(2, 'Minimum 2 caractères')
     .max(100, 'Maximum 100 caractères'),
   
   email: z
-    .string({ required_error: 'L\'email est requis' })
+    .string({ message: 'L\'email est requis' })
     .email('Email invalide'),
   
   password: z
-    .string({ required_error: 'Le mot de passe est requis' })
+    .string({ message: 'Le mot de passe est requis' })
     .min(6, 'Minimum 6 caractères')
     .max(100, 'Maximum 100 caractères'),
   
   confirmPassword: z
-    .string({ required_error: 'Confirmez le mot de passe' }),
+    .string({ message: 'Confirmez le mot de passe' }),
 }).refine(
   (data) => data.password === data.confirmPassword,
   {
@@ -187,7 +187,7 @@ export type RegisterFormData = z.infer<typeof registerSchema>;
 export function formatZodError(error: z.ZodError): Record<string, string> {
   const errors: Record<string, string> = {};
   
-  error.errors.forEach((err) => {
+  error.issues.forEach((err) => {
     const path = err.path.join('.');
     errors[path] = err.message;
   });

@@ -439,7 +439,7 @@ export function OnboardingClient({
                     <ChevronLeft size={18} className="mr-2" />
                     Retour
                   </AnimatedButton>
-                  <AnimatedButton onClick={suggestPercents} variant="secondary" className="flex-1">
+                  <AnimatedButton onClick={suggestPercents} variant="default" className="flex-1">
                     Normaliser à 100%
                   </AnimatedButton>
                   <AnimatedButton

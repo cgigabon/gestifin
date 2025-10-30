@@ -178,22 +178,22 @@ export function TransactionsClient({
       <AnimatedCard delay={0.4} enableHover={false}>
         <div className="flex flex-wrap gap-2">
           <motion.button whileTap={{ scale: 0.95 }} onClick={() => setFilter('all')}>
-            <Badge variant={filter === 'all' ? 'default' : 'outline'}>
+            <Badge variant={filter === 'all' ? 'info' : 'default'}>
               Toutes ({transactions.length})
             </Badge>
           </motion.button>
           <motion.button whileTap={{ scale: 0.95 }} onClick={() => setFilter('ENTREE')}>
-            <Badge variant={filter === 'ENTREE' ? 'success' : 'outline'}>
+            <Badge variant={filter === 'ENTREE' ? 'success' : 'default'}>
               Entrées ({transactions.filter(t => t.type === 'ENTREE').length})
             </Badge>
           </motion.button>
           <motion.button whileTap={{ scale: 0.95 }} onClick={() => setFilter('SORTIE')}>
-            <Badge variant={filter === 'SORTIE' ? 'destructive' : 'outline'}>
+            <Badge variant={filter === 'SORTIE' ? 'destructive' : 'default'}>
               Sorties ({transactions.filter(t => t.type === 'SORTIE').length})
             </Badge>
           </motion.button>
           <motion.button whileTap={{ scale: 0.95 }} onClick={() => setFilter('TRANSFERT')}>
-            <Badge variant={filter === 'TRANSFERT' ? 'info' : 'outline'}>
+            <Badge variant={filter === 'TRANSFERT' ? 'info' : 'default'}>
               Transferts ({transactions.filter(t => t.type === 'TRANSFERT').length})
             </Badge>
           </motion.button>

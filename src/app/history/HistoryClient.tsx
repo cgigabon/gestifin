@@ -269,7 +269,7 @@ function EnrichedDetails({ log }: { log: EnrichedAuditLog }) {
           {log.transaction_service && (
             <div className="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
               <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Service</span>
-              <Badge variant="secondary" className="font-medium">
+              <Badge variant="default" className="font-medium">
                 <Wrench size={12} className="mr-1" />
                 {log.transaction_service}
               </Badge>
@@ -298,11 +298,11 @@ function EnrichedDetails({ log }: { log: EnrichedAuditLog }) {
           )}
           {(fromEnv || toEnv) && (
             <div className="flex items-center justify-center gap-3 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-cyan-50 dark:from-blue-900/20 dark:to-cyan-900/20 border border-blue-200 dark:border-blue-800">
-              <Badge variant="secondary" className="px-3 py-1.5 text-sm font-semibold">
+              <Badge variant="default" className="px-3 py-1.5 text-sm font-semibold">
                 {fromEnv || 'Source'}
               </Badge>
               <ChevronRight size={20} className="text-blue-600 dark:text-blue-400" />
-              <Badge variant="secondary" className="px-3 py-1.5 text-sm font-semibold">
+              <Badge variant="default" className="px-3 py-1.5 text-sm font-semibold">
                 {toEnv || 'Destination'}
               </Badge>
             </div>
@@ -318,7 +318,7 @@ function EnrichedDetails({ log }: { log: EnrichedAuditLog }) {
           {log.envelope_name && (
             <div className="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
               <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Nom de l'enveloppe</span>
-              <Badge variant="secondary" className="font-semibold text-sm px-3 py-1.5">
+              <Badge variant="default" className="font-semibold text-sm px-3 py-1.5">
                 <Wallet size={14} className="mr-1.5" />
                 {log.envelope_name}
               </Badge>
@@ -343,7 +343,7 @@ function EnrichedDetails({ log }: { log: EnrichedAuditLog }) {
           {log.service_name && (
             <div className="flex items-center justify-between p-3 rounded-lg bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-700">
               <span className="text-sm font-medium text-zinc-600 dark:text-zinc-400">Nom du service</span>
-              <Badge variant="secondary" className="font-semibold text-sm px-3 py-1.5">
+              <Badge variant="default" className="font-semibold text-sm px-3 py-1.5">
                 <Wrench size={14} className="mr-1.5" />
                 {log.service_name}
               </Badge>
@@ -578,7 +578,7 @@ export function HistoryClient({ logs }: HistoryClientProps) {
         <div className="flex items-center justify-between mt-4 pt-4 border-t border-zinc-200 dark:border-zinc-700">
           <Button
             size="sm"
-            variant="secondary"
+            variant="default"
             onClick={() => {
               setSearchTerm('');
               setCategoryFilter('all');
@@ -588,7 +588,7 @@ export function HistoryClient({ logs }: HistoryClientProps) {
             Réinitialiser les filtres
           </Button>
           <div className="flex items-center gap-2">
-            <Badge variant="secondary" className="text-sm">
+            <Badge variant="default" className="text-sm">
               {filteredLogs.length} résultat{filteredLogs.length > 1 ? 's' : ''}
             </Badge>
           </div>
@@ -637,7 +637,7 @@ export function HistoryClient({ logs }: HistoryClientProps) {
                               {config.label}
                             </h3>
                             <div className="flex items-center gap-2 flex-wrap">
-                              <Badge variant="secondary" className="text-xs font-medium">
+                              <Badge variant="default" className="text-xs font-medium">
                                 {log.entity}
                               </Badge>
                               {log.entity_id && (
@@ -687,7 +687,7 @@ export function HistoryClient({ logs }: HistoryClientProps) {
                 Essayez de modifier vos filtres ou votre recherche
               </p>
               <Button
-                variant="secondary"
+                variant="default"
                 onClick={() => {
                   setSearchTerm('');
                   setCategoryFilter('all');

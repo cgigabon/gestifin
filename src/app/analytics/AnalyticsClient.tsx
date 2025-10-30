@@ -333,7 +333,7 @@ export function AnalyticsClient({ data }: AnalyticsClientProps) {
           transition={{ delay: 1.5 }}
         >
           <a href={`/api/export?type=transactions`}>
-            <Button variant="secondary" className="gap-2">
+            <Button variant="default" className="gap-2">
               <Download size={16} />
               Export CSV
             </Button>

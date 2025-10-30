@@ -45,7 +45,7 @@ export function ConfirmDialog({
               </div>
             </div>
             <div className="mt-4 flex justify-end gap-2">
-              <Button variant="secondary" onClick={()=>setOpen(false)} disabled={pending}>{cancelText}</Button>
+              <Button variant="default" onClick={()=>setOpen(false)} disabled={pending}>{cancelText}</Button>
               <Button variant="destructive" onClick={async ()=>{
                 try {
                   setPending(true);
